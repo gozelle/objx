@@ -3,8 +3,8 @@ package objx_test
 import (
 	"strings"
 	"testing"
-
-	"github.com/stretchr/objx"
+	
+	"github.com/gozelle/objx"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -15,9 +15,9 @@ func TestExclude(t *testing.T) {
 		"age":    29,
 		"secret": "ABC",
 	}
-
+	
 	excluded := m.Exclude([]string{"secret"})
-
+	
 	assert.Equal(t, m["name"], excluded["name"])
 	assert.Equal(t, m["age"], excluded["age"])
 	assert.False(t, excluded.Has("secret"), "secret should be excluded")
@@ -28,14 +28,14 @@ func TestCopy(t *testing.T) {
 		"name":     "Tyler",
 		"location": "UT",
 	}
-
+	
 	m2 := m1.Copy()
 	require.NotNil(t, m2)
 	m2["name"] = "Mat"
-
+	
 	assert.Equal(t, m1.Get("name").Str(), "Tyler")
 	assert.Equal(t, m2.Get("name").Str(), "Mat")
-
+	
 }
 
 func TestMerge(t *testing.T) {
@@ -46,9 +46,9 @@ func TestMerge(t *testing.T) {
 		"name":     "Tyler",
 		"location": "UT",
 	}
-
+	
 	merged := m1.Merge(m2)
-
+	
 	assert.Equal(t, merged.Get("name").Str(), m2.Get("name").Str())
 	assert.Equal(t, merged.Get("location").Str(), m2.Get("location").Str())
 	assert.Empty(t, m1.Get("location").Str())
@@ -62,9 +62,9 @@ func TestMergeHere(t *testing.T) {
 		"name":     "Tyler",
 		"location": "UT",
 	}
-
+	
 	merged := m1.MergeHere(m2)
-
+	
 	assert.Equal(t, m1, merged, "With MergeHere, it should return the first modified map")
 	assert.Equal(t, merged.Get("name").Str(), m2.Get("name").Str())
 	assert.Equal(t, merged.Get("location").Str(), m2.Get("location").Str())

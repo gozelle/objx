@@ -3,7 +3,7 @@ package objx_test
 import (
 	"testing"
 
-	"github.com/stretchr/objx"
+	"github.com/gozelle/objx"
 	"github.com/stretchr/testify/assert"
 )
 
