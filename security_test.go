@@ -2,9 +2,9 @@ package objx_test
 
 import (
 	"testing"
-
+	
+	"github.com/gozelle/testify/assert"
 	"github.com/gozelle/objx"
-	"github.com/stretchr/testify/assert"
 )
 
 func TestHashWithKey(t *testing.T) {

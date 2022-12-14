@@ -2,9 +2,9 @@ package objx_test
 
 import (
 	"testing"
-
+	
+	"github.com/gozelle/testify/assert"
 	"github.com/gozelle/objx"
-	"github.com/stretchr/testify/assert"
 )
 
 var fixtures = []struct {
@@ -83,11 +83,11 @@ var fixtures = []struct {
 func TestFixtures(t *testing.T) {
 	for _, fixture := range fixtures {
 		m := objx.MustFromJSON(fixture.data)
-
+		
 		// get the value
 		t.Logf("Running get fixture: \"%s\" (%v)", fixture.name, fixture)
 		value := m.Get(fixture.get.(string))
-
+		
 		// make sure it matches
 		assert.Equal(t, fixture.output, value.Data(),
 			"Get fixture \"%s\" failed: %v", fixture.name, fixture,

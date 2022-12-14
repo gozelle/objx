@@ -4,9 +4,9 @@ import (
 	"strings"
 	"testing"
 	
+	"github.com/gozelle/testify/assert"
+	"github.com/gozelle/testify/require"
 	"github.com/gozelle/objx"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 )
 
 func TestExclude(t *testing.T) {
